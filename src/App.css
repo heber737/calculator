@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main {
+  color: #FFFFFF;
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E1EFE6;
+}
+
+#calculator {
+  padding: 3px;
+  height: 500px;
+  flex: 0 0 400px;
+  background-color: #000411;
+  border-radius: 2px;
+  border: 4px solid #4B4D62;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+#display-wrapper {
+  flex-basis: 16.66%;
+  text-align: right;
+}
+
+#result {
+  padding-top: 7px;
+  color: #ecd147;
+  width: 100%;
+  height: 50%;
+  font-size: 1.3rem;
+  line-height: calc(100%);
+}
+
+#display {
+  padding-bottom: 5px;
+  color:#E1EFE6;
+  width: 100%;
+  height: 50%;
+  font-size: 1.7rem;
+  line-height: calc(100%);
+}
+
+#num-pad {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: 
+  "clear clear add substract"
+  "seven eight nine multiply"
+  "four five six divide"
+  "one two three equals"
+  "zero zero decimal equals"
+  ;
+  gap: 2px;
+}
+
+button {
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+button:hover {
+  border: 2px solid #CCCCCC
+}
+
+.number {
+  background-color: #4B4D62;
+}
+
+.symbol {
+  background-color: #2B2D42;
+}
+
+#equals {
+  grid-area: equals;
+  background-color: #ae8105;
+}
+
+#zero {
+  grid-area: zero;
+}
+
+#one {
+  grid-area: one;
+}
+
+#two {
+  grid-area: two;
+}
+
+#three {
+  grid-area: three;
+}
+
+#four {
+  grid-area: four;
+}
+
+#five {
+  grid-area: five;
+}
+
+#six {
+  grid-area: six;
+}
+
+#seven {
+  grid-area: seven;
+}
+
+#eight {
+  grid-area: eight;
+}
+
+#nine {
+  grid-area: nine;
+}
+
+#add {
+  grid-area: add;
+}
+
+#substract {
+  grid-area: substract;
+}
+
+#multiply {
+  grid-area: multiply;
+}
+
+#divide {
+  grid-area: divide;
+}
+
+#decimal {
+  grid-area: decimal;
+}
+
+#clear {
+  grid-area: clear;
+  background-color: #EC4120;
+}
