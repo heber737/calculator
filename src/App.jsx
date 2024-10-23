@@ -8,11 +8,11 @@ export default function App() {
   const [currentExp, setCurrentExp] = useState("0");
   const [result, setResult] = useState(null);
 
-  const symbolRegex = /[+\-x\/]/gm;
+  const symbolRegex = /[+\-x/]/gm;
   const decimalRegex = /[.]/gm;
-  const endsWithSymbolRegex = /[+\-*\/]$/;
-  const endsWithSingleSymbolRegex = /([0-9])([+\-*\/])$/;
-  const endsWithTwoSymbolsRegex = /([0-9])([+\-*\/])([+\-*\/])$/;
+  const endsWithSymbolRegex = /[+\-*/]$/;
+  const endsWithSingleSymbolRegex = /([0-9])([+\-*/])$/;
+  const endsWithTwoSymbolsRegex = /([0-9])([+\-*/])([+\-*/])$/;
 
   const haveSymbol = symbolRegex.test(output);
   const haveDecimal = decimalRegex.test(output);
