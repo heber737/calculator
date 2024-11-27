@@ -2,49 +2,49 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #main {
-  color: #FFFFFF;
+  color: #ffffff;
   min-width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #E1EFE6;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #e1efe6;
 }
 
 #calculator {
   padding: 3px;
   height: 500px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 400px;
-          flex: 0 0 400px;
+  -ms-flex: 0 0 400px;
+  flex: 0 0 400px;
   background-color: #000411;
   border-radius: 2px;
-  border: 4px solid #4B4D62;
+  border: 4px solid #4b4d62;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
 }
 
 #display-wrapper {
   -ms-flex-preferred-size: 16.66%;
-      flex-basis: 16.66%;
+  flex-basis: 16.66%;
   text-align: right;
 }
 
@@ -59,7 +59,7 @@
 
 #display {
   padding-bottom: 5px;
-  color:#E1EFE6;
+  color: #e1efe6;
   width: 100%;
   height: 50%;
   font-size: 1.7rem;
@@ -67,7 +67,7 @@
 }
 
 #numpad-wrapper {
-  height: 100%
+  height: 100%;
 }
 
 #numpad {
@@ -79,13 +79,12 @@
   grid-template-columns: repeat(4, 1fr);
   -ms-grid-rows: 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr;
   grid-template-rows: repeat(5, 1fr);
-      grid-template-areas: 
-  "clear clear add substract"
-  "seven eight nine multiply"
-  "four five six divide"
-  "one two three equals"
-  "zero zero decimal equals"
-  ;
+  grid-template-areas:
+    "clear clear add substract"
+    "seven eight nine multiply"
+    "four five six divide"
+    "one two three equals"
+    "zero zero decimal equals";
   gap: 2px;
 }
 
@@ -99,18 +98,20 @@ button {
 }
 
 button:hover {
-  border: 2px solid #CCCCCC
+  border: 2px solid #cccccc;
 }
 
 .number {
-  background-color: #4B4D62;
+  background-color: #4b4d62;
 }
 
 .symbol {
-  background-color: #2B2D42;
+  background-color: #2b2d42;
 }
 
 #equals {
+  grid-row: 7;
+  grid-column: 7;
   -ms-grid-row: 7;
   -ms-grid-row-span: 3;
   -ms-grid-column: 7;
@@ -119,6 +120,8 @@ button:hover {
 }
 
 #zero {
+  grid-row: 9;
+  grid-column: 1;
   -ms-grid-row: 9;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
@@ -126,93 +129,123 @@ button:hover {
 }
 
 #one {
+  grid-row: 7;
+  grid-column: 1;
   -ms-grid-row: 7;
   -ms-grid-column: 1;
   grid-area: one;
 }
 
 #two {
+  grid-row: 7;
+  grid-column: 3;
   -ms-grid-row: 7;
   -ms-grid-column: 3;
   grid-area: two;
 }
 
 #three {
+  grid-row: 7;
+  grid-column: 5;
   -ms-grid-row: 7;
   -ms-grid-column: 5;
   grid-area: three;
 }
 
 #four {
+  grid-row: 5;
+  grid-column: 1;
   -ms-grid-row: 5;
   -ms-grid-column: 1;
   grid-area: four;
 }
 
 #five {
+  grid-row: 5;
+  grid-column: 3;
   -ms-grid-row: 5;
   -ms-grid-column: 3;
   grid-area: five;
 }
 
 #six {
+  grid-row: 5;
+  grid-column: 5;
   -ms-grid-row: 5;
   -ms-grid-column: 5;
   grid-area: six;
 }
 
 #seven {
+  grid-row: 3;
+  grid-column: 1;
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: seven;
 }
 
 #eight {
+  grid-row: 3;
+  grid-column: 3;
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: eight;
 }
 
 #nine {
+  grid-row: 3;
+  grid-column: 5;
   -ms-grid-row: 3;
   -ms-grid-column: 5;
   grid-area: nine;
 }
 
 #add {
+  grid-row: 1;
+  grid-column: 5;
   -ms-grid-row: 1;
   -ms-grid-column: 5;
   grid-area: add;
 }
 
 #substract {
+  grid-row: 1;
+  grid-column: 7;
   -ms-grid-row: 1;
   -ms-grid-column: 7;
   grid-area: substract;
 }
 
 #multiply {
+  grid-row: 3;
+  grid-column: 7;
   -ms-grid-row: 3;
   -ms-grid-column: 7;
   grid-area: multiply;
 }
 
 #divide {
+  grid-row: 5;
+  grid-column: 7;
   -ms-grid-row: 5;
   -ms-grid-column: 7;
   grid-area: divide;
 }
 
 #decimal {
+  grid-row: 9;
+  grid-column: 5;
   -ms-grid-row: 9;
   -ms-grid-column: 5;
   grid-area: decimal;
 }
 
 #clear {
+  grid-row: 1;
+  grid-column: 1;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: clear;
-  background-color: #EC4120;
+  background-color: #ec4120;
 }
