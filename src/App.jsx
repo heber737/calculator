@@ -22,7 +22,7 @@ export default function App() {
   const endsWithTwoSymbols = endsWithTwoSymbolsRegex.test(currentExp);
   const oneToNine = /[1-9]/;
 
-  function inputNumber(char) {
+  function numberInput(char) {
     if (result == null) {
       if (output === "0") {
         setOutput(char);
@@ -43,7 +43,7 @@ export default function App() {
     }
   }
 
-  function inputZero() {
+  function zeroInput() {
     if (result == null) {
       if (output === "0") {
         setCurrentExp("0");
@@ -64,7 +64,7 @@ export default function App() {
     }
   }
 
-  function inputDot() {
+  function dotInput() {
     if (result == null) {
       if (output === "0" && endsWithSymbol === false) {
         setOutput("0.");
@@ -95,7 +95,7 @@ export default function App() {
     }
   }
 
-  function inputSymbol(char) {
+  function symbolInput(char) {
     if (result == null) {
       if (
         currentExp === "" ||
@@ -163,13 +163,13 @@ export default function App() {
     }
   }
 
-  function inputAC() {
+  function acInput() {
     setOutput("0");
     setCurrentExp("0");
     setResult(null);
   }
 
-  function inputEquals() {
+  function equalsInput() {
     const currentResult = evaluate(currentExp);
     setOutput(currentResult);
     setCurrentExp(currentExp.concat("=", currentResult));
@@ -191,17 +191,17 @@ export default function App() {
     let input = e.target.value;
     let inputType = e.target.className;
     if (oneToNine.test(input)) {
-      inputNumber(input);
+      numberInput(input);
     } else if (input === "0") {
-      inputZero();
+      zeroInput();
     } else if (input === ".") {
-      inputDot();
+      dotInput();
     } else if (inputType === "symbol") {
-      inputSymbol(input);
+      symbolInput(input);
     } else if (input === "AC") {
-      inputAC();
+      acInput();
     } else if (input === "=") {
-      inputEquals();
+      equalsInput();
     }
     maxChars();
   }
@@ -223,7 +223,7 @@ function Calculator({ output, currentExp, handleClick }) {
       <div id="display-wrapper">
         <Display output={output} currentExp={currentExp} />
       </div>
-      <div id="num-pad">
+      <div id="numpad-wrapper">
         <NumPad handleClick={handleClick} />
       </div>
     </div>
@@ -240,135 +240,52 @@ function Display({ output, currentExp }) {
 }
 
 function NumPad({ handleClick }) {
+  const buttonSequence = [
+    { type: null, buttonId: "equals", content: "=" },
+    { type: "number", buttonId: "zero", content: "0" },
+    { type: "number", buttonId: "one", content: "1" },
+    { type: "number", buttonId: "two", content: "2" },
+    { type: "number", buttonId: "three", content: "3" },
+    { type: "number", buttonId: "four", content: "4" },
+    { type: "number", buttonId: "five", content: "5" },
+    { type: "number", buttonId: "six", content: "6" },
+    { type: "number", buttonId: "seven", content: "7" },
+    { type: "number", buttonId: "eight", content: "8" },
+    { type: "number", buttonId: "nine", content: "9" },
+    { type: "symbol", buttonId: "add", content: "+" },
+    { type: "symbol", buttonId: "subtract", content: "-" },
+    { type: "symbol", buttonId: "multiply", content: "x" },
+    { type: "symbol", buttonId: "divbuttonIde", content: "/" },
+    { type: "number", buttonId: "decimal", content: "." },
+    { type: null, buttonId: "clear", content: "AC" },
+  ];
   return (
-    <>
-      <button id="equals" value="=" onClick={(e) => handleClick(e)}>
-        =
-      </button>
-      <button
-        className="number"
-        id="zero"
-        value="0"
-        onClick={(e) => handleClick(e)}
-      >
-        0
-      </button>
-      <button
-        className="number"
-        id="one"
-        value="1"
-        onClick={(e) => handleClick(e)}
-      >
-        1
-      </button>
-      <button
-        className="number"
-        id="two"
-        value="2"
-        onClick={(e) => handleClick(e)}
-      >
-        2
-      </button>
-      <button
-        className="number"
-        id="three"
-        value="3"
-        onClick={(e) => handleClick(e)}
-      >
-        3
-      </button>
-      <button
-        className="number"
-        id="four"
-        value="4"
-        onClick={(e) => handleClick(e)}
-      >
-        4
-      </button>
-      <button
-        className="number"
-        id="five"
-        value="5"
-        onClick={(e) => handleClick(e)}
-      >
-        5
-      </button>
-      <button
-        className="number"
-        id="six"
-        value="6"
-        onClick={(e) => handleClick(e)}
-      >
-        6
-      </button>
-      <button
-        className="number"
-        id="seven"
-        value="7"
-        onClick={(e) => handleClick(e)}
-      >
-        7
-      </button>
-      <button
-        className="number"
-        id="eight"
-        value="8"
-        onClick={(e) => handleClick(e)}
-      >
-        8
-      </button>
-      <button
-        className="number"
-        id="nine"
-        value="9"
-        onClick={(e) => handleClick(e)}
-      >
-        9
-      </button>
-      <button
-        className="symbol"
-        id="add"
-        value="+"
-        onClick={(e) => handleClick(e)}
-      >
-        +
-      </button>
-      <button
-        className="symbol"
-        id="subtract"
-        value="-"
-        onClick={(e) => handleClick(e)}
-      >
-        -
-      </button>
-      <button
-        className="symbol"
-        id="multiply"
-        value="x"
-        onClick={(e) => handleClick(e)}
-      >
-        x
-      </button>
-      <button
-        className="symbol"
-        id="divide"
-        value="/"
-        onClick={(e) => handleClick(e)}
-      >
-        /
-      </button>
-      <button
-        className="number"
-        id="decimal"
-        value="."
-        onClick={(e) => handleClick(e)}
-      >
-        .
-      </button>
-      <button id="clear" value="AC" onClick={(e) => handleClick(e)}>
-        AC
-      </button>
-    </>
+    <ul id="numpad">
+      {buttonSequence.map(({ type, buttonId, content }) => {
+        return (
+          <li className={type} id={buttonId} key={buttonId}>
+            <CalcButton
+              type={type}
+              buttonId={buttonId}
+              content={content}
+              handleClick={handleClick}
+            />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
+function CalcButton({ type, buttonId, content, handleClick }) {
+  return (
+    <button
+      className={type}
+      id={buttonId}
+      value={content}
+      onClick={(e) => handleClick(e)}
+    >
+      {content}
+    </button>
+  );
+}

@@ -1,33 +1,50 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 #main {
   color: #FFFFFF;
   min-width: 100%;
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #E1EFE6;
 }
 
 #calculator {
   padding: 3px;
   height: 500px;
-  flex: 0 0 400px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 400px;
+          flex: 0 0 400px;
   background-color: #000411;
   border-radius: 2px;
   border: 4px solid #4B4D62;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
 }
 
 #display-wrapper {
-  flex-basis: 16.66%;
+  -ms-flex-preferred-size: 16.66%;
+      flex-basis: 16.66%;
   text-align: right;
 }
 
@@ -49,12 +66,20 @@
   line-height: calc(100%);
 }
 
-#num-pad {
-  flex-basis: 100%;
+#numpad-wrapper {
+  height: 100%
+}
+
+#numpad {
+  height: 100%;
+  list-style-type: none;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 2px 1fr 2px 1fr 2px 1fr;
   grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: 1fr 2px 1fr 2px 1fr 2px 1fr 2px 1fr;
   grid-template-rows: repeat(5, 1fr);
-  grid-template-areas: 
+      grid-template-areas: 
   "clear clear add substract"
   "seven eight nine multiply"
   "four five six divide"
@@ -65,10 +90,12 @@
 }
 
 button {
+  width: 100%;
+  height: 100%;
   border: none;
-  color: white;
   font-size: 1.3rem;
   font-weight: bolder;
+  color: white;
 }
 
 button:hover {
@@ -84,71 +111,108 @@ button:hover {
 }
 
 #equals {
+  -ms-grid-row: 7;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 7;
   grid-area: equals;
   background-color: #ae8105;
 }
 
 #zero {
+  -ms-grid-row: 9;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-area: zero;
 }
 
 #one {
+  -ms-grid-row: 7;
+  -ms-grid-column: 1;
   grid-area: one;
 }
 
 #two {
+  -ms-grid-row: 7;
+  -ms-grid-column: 3;
   grid-area: two;
 }
 
 #three {
+  -ms-grid-row: 7;
+  -ms-grid-column: 5;
   grid-area: three;
 }
 
 #four {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
   grid-area: four;
 }
 
 #five {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
   grid-area: five;
 }
 
 #six {
+  -ms-grid-row: 5;
+  -ms-grid-column: 5;
   grid-area: six;
 }
 
 #seven {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: seven;
 }
 
 #eight {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
   grid-area: eight;
 }
 
 #nine {
+  -ms-grid-row: 3;
+  -ms-grid-column: 5;
   grid-area: nine;
 }
 
 #add {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
   grid-area: add;
 }
 
 #substract {
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
   grid-area: substract;
 }
 
 #multiply {
+  -ms-grid-row: 3;
+  -ms-grid-column: 7;
   grid-area: multiply;
 }
 
 #divide {
+  -ms-grid-row: 5;
+  -ms-grid-column: 7;
   grid-area: divide;
 }
 
 #decimal {
+  -ms-grid-row: 9;
+  -ms-grid-column: 5;
   grid-area: decimal;
 }
 
 #clear {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-area: clear;
   background-color: #EC4120;
 }
