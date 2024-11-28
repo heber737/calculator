@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import "./App.css";
 import { evaluate } from "mathjs";
+import "./App.css";
+import Display from "./components/Display";
+import NumPad from "./components/NumPad";
 
 export default function App() {
+  // VARIABLE DEFINITIONS
+
   const [output, setOutput] = useState("0");
   const [currentExp, setCurrentExp] = useState("0");
   const [result, setResult] = useState(null);
@@ -22,7 +26,9 @@ export default function App() {
   const endsWithTwoSymbols = endsWithTwoSymbolsRegex.test(currentExp);
   const oneToNine = /[1-9]/;
 
-  function numberInput(char) {
+  // HANDLERS
+
+  function handleNumberInput(char) {
     if (result == null) {
       if (output === "0") {
         setOutput(char);
@@ -43,7 +49,7 @@ export default function App() {
     }
   }
 
-  function zeroInput() {
+  function handleZeroInput() {
     if (result == null) {
       if (output === "0") {
         setCurrentExp("0");
@@ -64,7 +70,7 @@ export default function App() {
     }
   }
 
-  function dotInput() {
+  function handleDotInput() {
     if (result == null) {
       if (output === "0" && endsWithSymbol === false) {
         setOutput("0.");
@@ -95,7 +101,7 @@ export default function App() {
     }
   }
 
-  function symbolInput(char) {
+  function handleSymbolInput(char) {
     if (result == null) {
       if (
         currentExp === "" ||
@@ -163,129 +169,56 @@ export default function App() {
     }
   }
 
-  function acInput() {
+  function handleAcInput() {
     setOutput("0");
     setCurrentExp("0");
     setResult(null);
   }
 
-  function equalsInput() {
+  function handleEqualsInput() {
     const currentResult = evaluate(currentExp);
     setOutput(currentResult);
     setCurrentExp(currentExp.concat("=", currentResult));
     setResult(currentResult);
   }
 
-  function maxChars() {
-    if (output.length > 30 || currentExp.length > 30) {
-      setOutput("error");
-      setCurrentExp("error");
-    }
-    if (output === "error") {
-      setOutput("0");
-      setCurrentExp("");
-    }
-  }
-
-  function handleClick(e) {
+  function handleNumpadClick(e) {
     let input = e.target.value;
     let inputType = e.target.className;
+    function maxChars() {
+      if (output.length > 30 || currentExp.length > 30) {
+        setOutput("error");
+        setCurrentExp("error");
+      }
+      if (output === "error") {
+        setOutput("0");
+        setCurrentExp("");
+      }
+    }
     if (oneToNine.test(input)) {
-      numberInput(input);
+      handleNumberInput(input);
     } else if (input === "0") {
-      zeroInput();
+      handleZeroInput();
     } else if (input === ".") {
-      dotInput();
+      handleDotInput();
     } else if (inputType === "symbol") {
-      symbolInput(input);
+      handleSymbolInput(input);
     } else if (input === "AC") {
-      acInput();
+      handleAcInput();
     } else if (input === "=") {
-      equalsInput();
+      handleEqualsInput();
     }
     maxChars();
   }
 
-  return (
-    <div id="main">
-      <Calculator
-        output={output}
-        currentExp={currentExp}
-        handleClick={handleClick}
-      />
-    </div>
-  );
-}
-
-function Calculator({ output, currentExp, handleClick }) {
   return (
     <div id="calculator">
       <div id="display-wrapper">
         <Display output={output} currentExp={currentExp} />
       </div>
       <div id="numpad-wrapper">
-        <NumPad handleClick={handleClick} />
+        <NumPad handleNumpadClick={handleNumpadClick} />
       </div>
     </div>
-  );
-}
-
-function Display({ output, currentExp }) {
-  return (
-    <>
-      <div id="result">{currentExp}</div>
-      <div id="display">{output}</div>
-    </>
-  );
-}
-
-function NumPad({ handleClick }) {
-  const buttonSequence = [
-    { type: null, buttonId: "equals", content: "=" },
-    { type: "number", buttonId: "zero", content: "0" },
-    { type: "number", buttonId: "one", content: "1" },
-    { type: "number", buttonId: "two", content: "2" },
-    { type: "number", buttonId: "three", content: "3" },
-    { type: "number", buttonId: "four", content: "4" },
-    { type: "number", buttonId: "five", content: "5" },
-    { type: "number", buttonId: "six", content: "6" },
-    { type: "number", buttonId: "seven", content: "7" },
-    { type: "number", buttonId: "eight", content: "8" },
-    { type: "number", buttonId: "nine", content: "9" },
-    { type: "symbol", buttonId: "add", content: "+" },
-    { type: "symbol", buttonId: "subtract", content: "-" },
-    { type: "symbol", buttonId: "multiply", content: "x" },
-    { type: "symbol", buttonId: "divbuttonIde", content: "/" },
-    { type: "number", buttonId: "decimal", content: "." },
-    { type: null, buttonId: "clear", content: "AC" },
-  ];
-  return (
-    <ul id="numpad">
-      {buttonSequence.map(({ type, buttonId, content }) => {
-        return (
-          <li className={type} id={buttonId} key={buttonId}>
-            <CalcButton
-              type={type}
-              buttonId={buttonId}
-              content={content}
-              handleClick={handleClick}
-            />
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function CalcButton({ type, buttonId, content, handleClick }) {
-  return (
-    <button
-      className={type}
-      id={buttonId}
-      value={content}
-      onClick={(e) => handleClick(e)}
-    >
-      {content}
-    </button>
   );
 }
