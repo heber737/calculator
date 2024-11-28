@@ -186,7 +186,7 @@ export default function App() {
     let input = e.target.value;
     let inputType = e.target.className;
     function maxChars() {
-      if (output.length > 30 || currentExp.length > 30) {
+      if (output.length > 25) {
         setOutput("error");
         setCurrentExp("error");
       }
