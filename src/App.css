@@ -36,6 +36,7 @@
 #result {
   overflow: scroll;
   direction: rtl;
+  text-wrap: nowrap;
   padding-top: 7px;
   color: #ecd147;
   width: 100%;

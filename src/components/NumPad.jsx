@@ -25,7 +25,7 @@ export default function NumPad({ handleNumpadClick }) {
     <ul id="numpad">
       {buttonSequence.map(({ type, buttonId, content }) => {
         return (
-          <li className={type} id={buttonId} key={buttonId}>
+          <li id={buttonId} key={buttonId}>
             <CalcButton
               type={type}
               buttonId={buttonId}
