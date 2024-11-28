@@ -35,7 +35,6 @@
 
 #result {
   overflow: scroll;
-  direction: rtl;
   text-wrap: nowrap;
   padding-top: 7px;
   color: #ecd147;
@@ -104,6 +103,14 @@ button:hover {
 
 .symbol {
   background-color: #2b2d42;
+}
+
+.red-button {
+  background-color: #ec4120;
+}
+
+.yellow-button {
+  background-color: #ae8105;
 }
 
 #equals {
@@ -244,5 +251,4 @@ button:hover {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: clear;
-  background-color: #ec4120;
 }

@@ -3,7 +3,7 @@ import CalcButton from "./CalcButton";
 
 export default function NumPad({ handleNumpadClick }) {
   const buttonSequence = [
-    { type: null, buttonId: "equals", content: "=" },
+    { type: "yellow-button", buttonId: "equals", content: "=" },
     { type: "number", buttonId: "zero", content: "0" },
     { type: "number", buttonId: "one", content: "1" },
     { type: "number", buttonId: "two", content: "2" },
@@ -19,7 +19,7 @@ export default function NumPad({ handleNumpadClick }) {
     { type: "symbol", buttonId: "multiply", content: "x" },
     { type: "symbol", buttonId: "divbuttonIde", content: "/" },
     { type: "number", buttonId: "decimal", content: "." },
-    { type: null, buttonId: "clear", content: "AC" },
+    { type: "red-button", buttonId: "clear", content: "AC" },
   ];
   return (
     <ul id="numpad">
@@ -28,7 +28,6 @@ export default function NumPad({ handleNumpadClick }) {
           <li id={buttonId} key={buttonId}>
             <CalcButton
               type={type}
-              buttonId={buttonId}
               content={content}
               handleNumpadClick={handleNumpadClick}
             />
